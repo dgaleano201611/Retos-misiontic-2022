@@ -14,7 +14,7 @@ palabra_2 = palabra_sin_comas.replace(" ", "")
 inverza = list(palabra_2)
 inverza.reverse()
 
-#convertimos nuevamente a cadena de caracteres
+#convertimos nuevamente a cadena de caracteres sin espacios
 new_word = "".join(inverza)
 
 #verificamos si es palindromo   
