@@ -1,3 +1,9 @@
+
+# catalogo de articulos y precios con llave codigo del artículo
+articulos={1:"Lapiz", 2:"Cuaderno", 3:"Borrador", 4:"Regla", 5:"ColoresX12", 6:"Escuadra", 7:"Calculadora", 8:"CrayonesX6"}
+precios={1:2500,2:4500,3:1500,4:5000,5:24000,6:4700,7:45000,8:8900}
+
+# n es el numero de artículos de diferente tipo comprados
 n = int(input("cantidad de productos diferentes: "))
 
 #inicialización de cantidades sumativas
@@ -11,9 +17,14 @@ productos = []
 for i in range(1, n+1, 1):
     producto = []
     codigo = int(input("codigo: "))
-    nombre = input("nombre: ")
-    cantidad = int(input("cantidad: "))
-    valor_unitario = float(input("Valor unitario: "))
+
+    nombre = articulos.get(codigo) # el nombre se lee del diccionario articulos
+    
+    cantidad = float(input("cantidad: "))
+
+    
+    valor_unitario = precios.get(codigo) # codigo se lee del diccionario precios.
+
     tipo_iva = int(input("Tipo de iva: "))
     valor_producto = valor_unitario * cantidad
     
@@ -31,21 +42,18 @@ for i in range(1, n+1, 1):
     total_iva = total_iva + iva
 
     # Introducir datos en la lista producto
-    producto.append(nombre)
     producto.append(codigo)
-    producto.append(iva)
+    producto.append(nombre)
     producto.append(valor_producto)
     producto.append(valor_final_producto)
 
     # Llenar lista madre productos con sublistas de cada producto
     productos.append(producto)
 
-#ordenado de lista por orden alfabetico del nombre del producto
-productos.sort()  
 
 #Impresion de datos
 for producto in productos:
-    for datos in range(1,len(producto)):
+    for datos in range(len(producto)):
         print(producto[datos])
 
 print(total)
